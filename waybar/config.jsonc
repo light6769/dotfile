@@ -1,0 +1,128 @@
+ {
+    "layer": "top",
+    "position": "top",
+    "height": 41,
+    "spacing": 8,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+    
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/spotify-viz", "pulseaudio", "network", "memory", "temperature", "battery", "tray", "custom/power"],
+    "reload_style_on_change":true,
+
+    "custom/launcher": {
+        "format": " 󰣇 ",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
+    
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "I",
+            "2": "II",
+            "3": "III",
+            "4": "IV",
+            "5": "V"
+        },
+        "persistent-workspaces": {
+            "*": 5
+	},
+        "ignore-workspaces": ["6", "7", "8", "9", "10"]
+    },
+    
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true,
+        "rewrite": {
+            "": "Desktop"
+        }
+    },
+    
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %B %d, %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 60
+    },
+
+    "custom/spotify-viz": {
+        "exec": "/home/light_roronoa/.config/waybar/scripts/spotify-visualizer.sh",
+        "interval": 2
+    },
+    
+    "memory": {
+        "format": "󰘚 {percentage}%",
+        "interval": 2,
+        "on-click": "kitty -e btop",
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\n{percentage}% used",
+        "states": {
+            "high": 80
+        }
+    },
+    
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "🌡️{temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "tooltip-format": "Temperature: {temperatureC}°C",
+        "interval": 5
+    },
+    
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{capacity}% - {timeTo}",
+        "interval": 30
+    },
+    
+    "network": {
+        "format-wifi": "󰤨 {signalStrength}%",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰤭 Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}\n⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}\n⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}",
+        "on-click": "kitty -e nmtui",
+        "interval": 5
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "Muted",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󱡏",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "{desc}\nVolume: {volume}%"
+    },
+    
+    "tray": {
+        "icon-size": 18,
+    "spacing": 0,
+        "show-passive-items": true
+    },
+    
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": "Power Menu"
+    }
+}

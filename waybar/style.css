@@ -1,0 +1,243 @@
+@import url("/home/light_roronoa/.cache/wal/colors-waybar.css");
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.2);
+    color: @foreground;
+    border-radius: 12px;
+    border: 1px solid transparent;
+}
+
+#custom-launcher {
+    background: @color8;
+    color: @foreground;
+    padding: 0 8px;
+    margin: 6px 0 6px 6px;
+    border-radius: 8px;
+    border: 2px solid @color5;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+#custom-launcher:hover {
+    background: linear-gradient(135deg, @color2 0%, @color3 100%);
+    box-shadow: 0 0 15px @color1;
+}
+
+#workspaces {
+    margin: 6px 0px;
+    padding: 0 1px;
+}
+
+#workspaces button {
+    padding: 0 3px;
+    min-width: 30px;
+    color: @color7;
+    background: @color8;
+    border-radius: 8px;
+    margin: 0 3px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    opacity: 0.5;
+}
+
+#workspaces button.active {
+    background: @color8;
+    color: @foreground;
+    border: 2px solid @color5;
+    font-weight: 700;
+    box-shadow: none;
+    opacity: 1;
+}
+
+#workspaces button:hover {
+    background: @color0;
+    border-color: @color4;
+    opacity: 1;
+}
+
+#window {
+    margin: 6px 8px;
+    padding: 4px 16px;
+    color: @color7;
+    font-weight: 600;
+    background: @color8;
+    border-radius: 8px;
+    border: 1px solid @color3;
+    min-width: 200px;
+}
+
+#clock {
+    background: @color8;
+    color: @foreground;
+    padding: 0 20px;
+    margin: 6px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid @color5;
+    transition: all 0.3s ease;
+}
+
+#clock:hover {
+    box-shadow: 0 0 15px @color1;
+}
+
+#custom-spotify-viz {
+    padding: 0 8px;
+    margin: 6px 1px;
+    background: @color8;
+    border-radius: 8px;
+    border: 1px solid @color3;
+    transition: all 0.3s ease;
+    color: @color7;
+    font-weight: 500;
+}
+
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#tray {
+    padding: 0 5px;
+    margin: 6px 0px;
+    background: @color8;
+    border-radius: 8px;
+    border: 1px solid @color3;
+    transition: all 0.3s ease;
+}
+
+#pulseaudio:hover,
+#network:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#tray:hover {
+    background: @color0;
+    border-color: @color4;
+}
+
+#memory {
+    color: @color5;
+    font-weight: 500;
+}
+
+#temperature {
+    color: @color3;
+}
+
+#temperature.critical {
+    background: @color1;
+    color: @background;
+    border-color: @color1;
+    animation: blink 1s ease infinite;
+    font-weight: 700;
+}
+
+#battery {
+    color: @color2;
+    font-weight: 500;
+}
+
+#battery.warning {
+    color: @color3;
+    animation: pulse 3s ease infinite;
+}
+
+#battery.critical {
+    background: @color1;
+    color: @background;
+    border-color: @color1;
+    animation: blink 1s ease infinite;
+    font-weight: 700;
+}
+
+#battery.charging {
+    color: @color6;
+    border-color: @color6;
+    box-shadow: 0 0 5px @color6;
+}
+
+#network {
+    color: @color6;
+    font-weight: 500;
+}
+
+#network.disconnected {
+    color: @color1;
+    opacity: 0.5;
+}
+
+#pulseaudio {
+    color: @color5;
+    font-weight: 500;
+}
+
+#pulseaudio.muted {
+    color: @color8;
+    opacity: 0.5;
+}
+
+#tray {
+    padding: 0 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @color1;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+#custom-power {
+    background: @color8;
+    color: @foreground;
+    padding: 0;
+    margin: 6px 6px 6px 0;
+    border-radius: 50%;
+    border: 2px solid @color3;
+    font-size: 12px;
+    font-weight: 900;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+#custom-power:hover {
+    background: @color0;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}

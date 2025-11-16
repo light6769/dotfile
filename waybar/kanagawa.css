@@ -1,0 +1,15 @@
+html {
+    --background: #16161D;
+    --foreground: #DCD7BA;
+    --foreground-dark: #C8C093;
+    --power: #DCA561;
+    --red: #C34043;
+    --orange: #FF9E3B;
+    --overlay: #2A2A37;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
