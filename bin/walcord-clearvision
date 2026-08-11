@@ -1,0 +1,8 @@
+#!/bin/sh
+python3 /tmp/opencode/walcord-2.10/main.py \
+  --theme /tmp/opencode/clearvision-template.css \
+  --output /home/light_roronoa/.config/BetterDiscord/themes/ \
+  --quiet
+mv /home/light_roronoa/.config/BetterDiscord/themes/clearvision-template.css \
+   /home/light_roronoa/.config/BetterDiscord/themes/ClearVision-Pywal.theme.css
+echo "Theme regenerated. Press Ctrl+R in Discord to reload."

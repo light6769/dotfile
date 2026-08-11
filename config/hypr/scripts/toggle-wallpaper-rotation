@@ -1,0 +1,8 @@
+#!/bin/bash
+if pgrep -f "pywal.sh" > /dev/null; then
+    pkill -f "pywal.sh"
+    notify-send "Rotation: OFF"
+else
+    ~/.config/swww/pywal.sh &
+    notify-send "Rotation: ON"
+fi

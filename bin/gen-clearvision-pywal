@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+import json, os
+
+wal = json.load(open(os.path.expanduser("~/.cache/wal/colors.json")))
+c = wal["colors"]
+bg = wal["special"]["background"]
+fg = wal["special"]["foreground"]
+wall = wal["wallpaper"]
+
+theme = f"""/**
+ * @name Pywal Discord
+ * @description Pywal-generated theme
+ */
+
+@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.css);
+
+:root {{
+  --settingsicons: 0;
+  --font: "CaskaydiaCove NFM", "gg sans", "Noto Sans";
+}}
+
+.theme-dark {{
+  --accentcolor: {c["color1"]};
+  --accentcolor2: {c["color1"]};
+  --linkcolor: {c["color2"]};
+  --mentioncolor: {c["color1"]};
+  --successcolor: 59,165,92;
+  --warningcolor: 250,166,26;
+  --dangercolor: 237,66,69;
+  --textbrightest: {fg};
+  --textbrighter: {fg};
+  --textbright: {fg};
+  --textdark: {fg};
+  --textdarker: {fg};
+  --textdarkest: {c["color13"]};
+  --backgroundaccent: {bg};
+  --backgroundprimary: {bg};
+  --backgroundsecondary: {bg};
+  --backgroundsecondaryalt: {bg};
+  --backgroundtertiary: {bg};
+  --backgroundfloating: {bg};
+}}
+
+.theme-light {{
+  --accentcolor: {c["color8"]};
+  --accentcolor2: {c["color8"]};
+  --linkcolor: {c["color1"]};
+  --mentioncolor: {bg};
+  --successcolor: 59,165,92;
+  --warningcolor: 250,166,26;
+  --dangercolor: 237,66,69;
+  --textbrightest: {fg};
+  --textbrighter: {fg};
+  --textbright: {fg};
+  --textdark: {fg};
+  --textdarker: {fg};
+  --textdarkest: {c["color13"]};
+  --backgroundaccent: {c["color2"]};
+  --backgroundprimary: {c["color2"]};
+  --backgroundsecondary: {c["color2"]};
+  --backgroundsecondaryalt: {c["color2"]};
+  --backgroundtertiary: {bg};
+  --backgroundfloating: {bg};
+}}
+"""
+
+out = os.path.expanduser("~/.config/BetterDiscord/themes/Pywal-Discord.theme.css")
+with open(out, "w") as f:
+    f.write(theme)
+
+# Also update settings to enable it
+settings = os.path.expanduser("~/.config/BetterDiscord/data/stable/themes.json")
+with open(settings, "w") as f:
+    json.dump({"Pywal Discord": True}, f)
+
+print(f"Theme written to {out}")
+print("Restart Discord to apply.")

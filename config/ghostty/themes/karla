@@ -1,0 +1,24 @@
+# Colors generated for karla theme.
+
+background = #0E1113
+foreground = #afb1db
+cursor-color = #afb1db
+selection-background = #afb1db
+selection-foreground = #0E1113
+
+palette = 0=#353c52
+palette = 1=#e7034a
+palette = 2=#61b33e
+palette = 3=#ffb964
+palette = 4=#5884d4
+palette = 5=#7a44e3
+palette = 6=#7df0f0
+palette = 7=#afb1db
+palette = 8=#353c52
+palette = 9=#e71c5b
+palette = 10=#6fb352
+palette = 11=#ffb964
+palette = 12=#5f90ea
+palette = 13=#8656e3
+palette = 14=#97f0f0
+palette = 15=#afb1db

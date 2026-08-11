@@ -1,0 +1,12 @@
+#!/bin/bash
+WALLPAPER_DIR="$HOME/Downloads/wallpapers"
+
+kitty -e yazi --chooser-file=/tmp/selected-wallpaper "$WALLPAPER_DIR"
+
+if [ -f /tmp/selected-wallpaper ] && [ -s /tmp/selected-wallpaper ]; then
+    wallpaper=$(cat /tmp/selected-wallpaper)
+    wal -i "$wallpaper" -n -q
+    swww img "$wallpaper" --transition-type fade --transition-duration 2
+    pkill -SIGUSR2 waybar
+    rm -f /tmp/selected-wallpaper
+fi

@@ -1,0 +1,19 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*~
+*.tmp
+
+# Wallpapers (kept out of the repo)
+**/wallpapers/
+
+# Runtime / cache dirs
+**/node_modules/
+**/__pycache__/
+
+# Logs and runtime data
+*.log
+error.log
+mpd.db
+mpdstate

@@ -1,0 +1,15 @@
+#!/bin/bash
+SINK="alsa_output.pci-0000_64_00.6.analog-stereo"
+CURRENT=$(pactl list sinks | sed -n "/Name: $SINK/,/Formats:/p" | grep "Active Port" | awk '{print $3}')
+
+if [ "$CURRENT" = "analog-output-speaker" ]; then
+  pactl set-sink-port "$SINK" analog-output-headphones
+  amixer -c2 sset Headphone unmute 80% 2>/dev/null
+  amixer -c2 sset Speaker mute 2>/dev/null
+  notify-send "Audio" "Switched to Headphones"
+else
+  pactl set-sink-port "$SINK" analog-output-speaker
+  amixer -c2 sset Speaker unmute 80% 2>/dev/null
+  amixer -c2 sset Headphone mute 2>/dev/null
+  notify-send "Audio" "Switched to Speakers"
+fi
