@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# light_roronoa dotfiles installer.
+# Personal dotfiles installer.
 # Restores packages, configs, fonts, scripts and services on a fresh Arch Linux box.
 #
 # Usage:
@@ -25,7 +25,7 @@ die()  { warn "$1"; exit 1; }
 
 [ "$(id -u)" -eq 0 ] && die "Do not run this script as root."
 
-msg "light_roronoa dotfiles installer"
+msg "dotfiles installer"
 echo
 
 # 1. Base tools ----------------------------------------------------------------
@@ -46,7 +46,7 @@ if [ -f "$PKG_SRC/repos.conf" ]; then
         sudo pacman -S --needed --noconfirm chaotic-keyring chaotic-mirrorlist || true
     fi
     if ! grep -q '^\[chaotic-aur\]' /etc/pacman.conf 2>/dev/null; then
-        sudo sed -i '$a\# added by light_roronoa dotfiles' /etc/pacman.conf
+        sudo sed -i '$a\# added by dotfiles installer' /etc/pacman.conf
         while read -r line; do
             [ -n "$line" ] && sudo sed -i "\$a$line" /etc/pacman.conf
         done < "$PKG_SRC/repos.conf"
@@ -65,8 +65,11 @@ if [ -f "$PKG_SRC/aur.txt" ]; then
     yay -S --needed --noconfirm - < "$PKG_SRC/aur.txt"
 fi
 
-# 5. Symlink ~/.config apps -----------------------------------------------------
-msg "Linking configs into ~/.config..."
+# 5. Install ~/.config apps ----------------------------------------------------
+#    Symlinked where possible; configs using the __HOME__ placeholder are copied
+#    and the placeholder substituted with the real home directory (CSS/INI files
+#    cannot expand variables themselves).
+msg "Installing configs into ~/.config..."
 mkdir -p "$HOME/.config"
 for entry in "$CONFIG_SRC"/*; do
     name="$(basename "$entry")"
@@ -76,7 +79,13 @@ for entry in "$CONFIG_SRC"/*; do
         warn "~/.config/$name already exists and is not a symlink -> skipping"
         continue
     fi
-    ln -sfn "$entry" "$target"
+    rm -f "$target"
+    if grep -rIl '__HOME__' "$entry" >/dev/null 2>&1; then
+        cp -r "$entry" "$target"
+        grep -rl '__HOME__' "$target" | xargs -r sed -i "s|__HOME__|$HOME|g"
+    else
+        ln -sfn "$entry" "$target"
+    fi
 done
 
 # 6. User systemd services ------------------------------------------------------

@@ -160,10 +160,10 @@ alias ll='eza --icons=always --color=always -la'
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴
 #disable-fzf-tab
-export PATH=$PATH:/home/light_roronoa/.spicetify
+export PATH=$PATH:$HOME/.spicetify
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # opencode
-export PATH=/home/light_roronoa/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH

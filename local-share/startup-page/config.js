@@ -11,11 +11,10 @@ const CONFIG = {
 	// └─┘┴ ┴└─┘┴└─┘└─┘
 
 	// General
-	name: 'light_roronoa',
+	name: 'user',
 	imageBackground: false,
 	openInNewTab: true,
 	twelveHourFormat: true,
-	timeZone: 'Asia/Kathmandu',
 
 	// Greetings
 	greetingMorning: 'Good morning!',

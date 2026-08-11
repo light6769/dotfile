@@ -25,5 +25,4 @@ grep -q '^wifi\.cloned-mac-address=' "$CONFIG" || \
 nmcli general reload
 nmcli connection down "" 2>/dev/null
 nmcli connection up "" 2>/dev/null
-sudo -u light_roronoa DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u light_roronoa)/bus" notify-send -t 3000 "MAC Spoofing $STATE"
-
+sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" notify-send -t 3000 "MAC Spoofing $STATE"

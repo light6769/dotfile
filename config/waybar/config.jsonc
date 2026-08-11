@@ -56,7 +56,7 @@
     },
 
     "custom/spotify-viz": {
-        "exec": "/home/light_roronoa/.config/waybar/scripts/spotify-visualizer.sh",
+        "exec": "$HOME/.config/waybar/scripts/spotify-visualizer.sh",
         "interval": 2
     },
     

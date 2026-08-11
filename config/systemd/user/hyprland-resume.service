@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/home/light_roronoa/.config/hypr/scripts/resume-hook.sh
+ExecStart=%h/.config/hypr/scripts/resume-hook.sh
 Restart=always
 RestartSec=3
 

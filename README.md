@@ -29,7 +29,7 @@ The installer will:
 1. Install base tools (`git`, `base-devel`) and `yay`
 2. Add the `chaotic-aur` repository
 3. Install all 389 packages (`packages/pacman.txt` + `packages/aur.txt`)
-4. Symlink configs into `~/.config`
+4. Install configs into `~/.config` (symlinked, or copied with the `__HOME__` placeholder substituted)
 5. Install user services (hyprland-resume, mpd, pipewire)
 6. Link home dotfiles and `~/.local/bin` scripts
 7. Install fonts, the start page, and enable system services
@@ -57,6 +57,11 @@ scripts/sync.sh        # pull live configs back into the repo
 
 On this machine, run `./scripts/sync.sh` to copy any live changes back into the
 repo, review with `git status`, then commit and push.
+
+`sync.sh` also depersonalizes what it copies: machine-specific home paths are
+rewritten to portable forms (`__HOME__`, `$HOME`, `~`, `%h`) and the start page
+username/timezone are stripped, so the repo stays publishable and works on any
+machine.
 
 ## What is intentionally NOT included
 
